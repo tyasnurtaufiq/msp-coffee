@@ -39,13 +39,27 @@ export const useGaussElimination = () => {
     }
 
     const getLimitingFactor = (product: any, stock: any, limits: number[]) => {
+        if (limits.length === 0) return 'Tidak ada bahan'
+
         const minLimit = Math.min(...limits)
 
-        if (stock.coffee / product.ingredients.coffee === minLimit) return 'Biji Kopi'
-        if (stock.milk / product.ingredients.milk === minLimit) return 'Susu'
-        if (stock.syrup / product.ingredients.syrup === minLimit) return 'Sirup'
+        // Hitung limit per bahan baku dengan Math.floor
+        const coffeeLimit = product.ingredients.coffee > 0
+            ? Math.floor(stock.coffee / product.ingredients.coffee)
+            : Infinity
+        const milkLimit = product.ingredients.milk > 0
+            ? Math.floor(stock.milk / product.ingredients.milk)
+            : Infinity
+        const syrupLimit = product.ingredients.syrup > 0
+            ? Math.floor(stock.syrup / product.ingredients.syrup)
+            : Infinity
 
-        return 'Unknown'
+        // Cari bahan yang menjadi pembatas (yang nilainya = minLimit)
+        if (coffeeLimit === minLimit) return 'Biji Kopi'
+        if (milkLimit === minLimit) return 'Susu'
+        if (syrupLimit === minLimit) return 'Sirup'
+
+        return 'Stok Cukup'
     }
 
     return {

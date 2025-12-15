@@ -20,8 +20,14 @@
       <div class="bg-white rounded-xl shadow-sm p-6">
         <div class="flex items-center justify-between mb-6">
           <h2 class="text-xl font-bold text-stone-900">Detail Penjualan Per Bulan</h2>
-          <button class="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors text-sm font-semibold">
-            Export CSV
+          <button 
+            @click="exportToCSV"
+            class="bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors text-sm font-semibold flex items-center space-x-2"
+          >
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>Export CSV</span>
           </button>
         </div>
 
@@ -92,7 +98,7 @@
           <p class="text-amber-100 text-sm">Rp 19.000 per cup</p>
           <div class="mt-4 pt-4 border-t border-white/20">
             <p class="text-sm text-amber-100">Total Pendapatan</p>
-            <p class="text-xl font-bold">{{ formatCurrency(getTotalByProduct('kopiGularen') * 18000) }}</p>
+            <p class="text-xl font-bold">{{ formatCurrency(getTotalByProduct('kopiGularen') * 19000) }}</p>
           </div>
         </div>
 
@@ -109,7 +115,7 @@
           <p class="text-blue-100 text-sm">Rp 19.000 per cup</p>
           <div class="mt-4 pt-4 border-t border-white/20">
             <p class="text-sm text-blue-100">Total Pendapatan</p>
-            <p class="text-xl font-bold">{{ formatCurrency(getTotalByProduct('spanishLatte') * 22000) }}</p>
+            <p class="text-xl font-bold">{{ formatCurrency(getTotalByProduct('spanishLatte') * 19000) }}</p>
           </div>
         </div>
 
@@ -126,7 +132,7 @@
           <p class="text-green-100 text-sm">Rp 19.000 per cup</p>
           <div class="mt-4 pt-4 border-t border-white/20">
             <p class="text-sm text-green-100">Total Pendapatan</p>
-            <p class="text-xl font-bold">{{ formatCurrency(getTotalByProduct('honey') * 20000) }}</p>
+            <p class="text-xl font-bold">{{ formatCurrency(getTotalByProduct('honey') * 19000) }}</p>
           </div>
         </div>
       </div>
@@ -281,4 +287,57 @@ onUnmounted(() => {
     chartInstance.destroy()
   }
 })
+
+// Export to CSV
+const exportToCSV = () => {
+  const data = salesStore.getMonthlySalesData
+  
+  if (data.length === 0) {
+    alert('Tidak ada data untuk di-export')
+    return
+  }
+
+  // CSV Headers
+  const headers = ['Bulan', 'Kopi Gula Aren', 'Spanish Latte', 'Honey Coffee', 'Total Cup', 'Pendapatan']
+  
+  // CSV Rows
+  const rows = data.map(d => [
+    d.month,
+    d.kopiGularen,
+    d.spanishLatte,
+    d.honey,
+    d.kopiGularen + d.spanishLatte + d.honey,
+    d.revenue
+  ])
+
+  // Add total row
+  rows.push([
+    'TOTAL',
+    getTotalByProduct('kopiGularen'),
+    getTotalByProduct('spanishLatte'),
+    getTotalByProduct('honey'),
+    getTotalCups(),
+    getTotalRevenue()
+  ])
+
+  // Convert to CSV string with BOM for Excel compatibility
+  const BOM = '\uFEFF'
+  const csvContent = BOM + [
+    headers.join(','),
+    ...rows.map(row => row.join(','))
+  ].join('\n')
+
+  // Create filename
+  const filename = `laporan-penjualan-${new Date().toISOString().split('T')[0]}.csv`
+
+  // Create download using data URI
+  const encodedUri = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent)
+  const link = document.createElement('a')
+  link.href = encodedUri
+  link.download = filename
+  
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}
 </script>

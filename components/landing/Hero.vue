@@ -42,12 +42,12 @@
               </span>
             </NuxtLink>
             
-            <a 
-              href="#menu" 
+            <NuxtLink 
+              to="/menu" 
               class="px-8 py-4 border-2 border-stone-600 text-white font-semibold rounded-xl hover:bg-stone-800 hover:border-stone-500 transition-all duration-300"
             >
               Lihat Menu
-            </a>
+            </NuxtLink>
           </div>
 
           <!-- Stats -->
@@ -57,7 +57,7 @@
               <div class="text-stone-400 text-sm">Pelanggan</div>
             </div>
             <div class="text-center">
-              <div class="text-3xl font-bold text-amber-500">15+</div>
+              <div class="text-3xl font-bold text-amber-500">3</div>
               <div class="text-stone-400 text-sm">Menu Varian</div>
             </div>
             <div class="text-center">
