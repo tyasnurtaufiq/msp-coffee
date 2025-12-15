@@ -66,12 +66,6 @@ Aplikasi manajemen lengkap untuk UMKM Coffee Shop dengan fitur transaksi, stok b
 | **Stok Bahan** | Kelola stok, quick add, riwayat stok |
 | **Kalkulasi Produksi** | Hitung produksi maksimal per produk |
 
-### 🍵 Produk yang Tersedia
-| Produk | Harga | Bahan Baku |
-|--------|-------|------------|
-| Kopi Gula Aren | Rp 19.000 | Kopi 25g, Susu 120ml, Sirup 55ml |
-| Spanish Latte | Rp 19.000 | Kopi 20g, Susu 160ml, Sirup 20ml |
-| Honey Coffee | Rp 19.000 | Kopi 18g, Susu 140ml, Sirup 42ml |
 
 ---
 

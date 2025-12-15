@@ -58,24 +58,6 @@
             </div>
           </div>
 
-          <!-- Product Recipes -->
-          <!-- <div class="mt-6 pt-6 border-t border-stone-200">
-            <h3 class="font-semibold text-stone-900 mb-4">Resep Per Produk:</h3>
-            <div class="space-y-3 text-sm">
-              <div class="flex items-center justify-between">
-                <span class="text-stone-600">Kopi Gula Aren</span>
-                <span class="text-stone-900 font-medium">20g kopi + 30ml sirup</span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-stone-600">Spanish Latte</span>
-                <span class="text-stone-900 font-medium">20g kopi + 150ml susu + 20ml sirup</span>
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-stone-600">Honey Coffee</span>
-                <span class="text-stone-900 font-medium">20g kopi + 50ml susu + 25ml sirup</span>
-              </div>
-            </div>
-          </div> -->
         </div>
 
         <!-- Calculation Results -->
