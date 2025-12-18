@@ -1,15 +1,43 @@
 <template>
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-stone-900 via-stone-800 to-amber-900">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-10">
-      <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 80 80%22 width=%2280%22 height=%2280%22><circle cx=%2240%22 cy=%2240%22 r=%2220%22 fill=%22%23d97706%22 fill-opacity=%220.3%22/></svg>');"></div>
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <!-- Coffee Background Image -->
+    <div class="absolute inset-0">
+      <img 
+        src="~/assets/img/coffee-hero-bg.png" 
+        alt="Coffee Background" 
+        class="w-full h-full object-cover"
+      />
+      <!-- Dark Overlay for readability -->
+      <div class="absolute inset-0 bg-gradient-to-br from-stone-900/85 via-stone-800/80 to-amber-900/75"></div>
     </div>
 
-    <!-- Floating Coffee Beans Animation -->
+    <!-- Floating Coffee Beans Animation (Enhanced) -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="coffee-bean absolute w-4 h-6 bg-amber-800 rounded-full opacity-20" style="top: 20%; left: 10%; animation: float 6s ease-in-out infinite;"></div>
-      <div class="coffee-bean absolute w-3 h-5 bg-amber-700 rounded-full opacity-20" style="top: 40%; right: 15%; animation: float 8s ease-in-out infinite 1s;"></div>
-      <div class="coffee-bean absolute w-5 h-8 bg-amber-900 rounded-full opacity-15" style="bottom: 30%; left: 20%; animation: float 7s ease-in-out infinite 2s;"></div>
+      <!-- Coffee bean SVG decorations -->
+      <svg class="coffee-bean-svg absolute w-8 h-12 opacity-30" style="top: 15%; left: 8%; animation: float 6s ease-in-out infinite;" viewBox="0 0 24 36" fill="#92400e">
+        <ellipse cx="12" cy="18" rx="10" ry="16"/>
+        <path d="M12 4 Q12 18 12 32" stroke="#451a03" stroke-width="2" fill="none"/>
+      </svg>
+      <svg class="coffee-bean-svg absolute w-6 h-9 opacity-25" style="top: 35%; right: 12%; animation: float 8s ease-in-out infinite 1s;" viewBox="0 0 24 36" fill="#78350f">
+        <ellipse cx="12" cy="18" rx="10" ry="16"/>
+        <path d="M12 4 Q12 18 12 32" stroke="#451a03" stroke-width="2" fill="none"/>
+      </svg>
+      <svg class="coffee-bean-svg absolute w-10 h-14 opacity-20" style="bottom: 25%; left: 15%; animation: float 7s ease-in-out infinite 2s;" viewBox="0 0 24 36" fill="#92400e">
+        <ellipse cx="12" cy="18" rx="10" ry="16"/>
+        <path d="M12 4 Q12 18 12 32" stroke="#451a03" stroke-width="2" fill="none"/>
+      </svg>
+      <svg class="coffee-bean-svg absolute w-5 h-8 opacity-25" style="top: 60%; right: 25%; animation: float 9s ease-in-out infinite 0.5s;" viewBox="0 0 24 36" fill="#78350f">
+        <ellipse cx="12" cy="18" rx="10" ry="16"/>
+        <path d="M12 4 Q12 18 12 32" stroke="#451a03" stroke-width="2" fill="none"/>
+      </svg>
+      <svg class="coffee-bean-svg absolute w-7 h-10 opacity-20" style="top: 75%; left: 5%; animation: float 10s ease-in-out infinite 3s;" viewBox="0 0 24 36" fill="#92400e">
+        <ellipse cx="12" cy="18" rx="10" ry="16"/>
+        <path d="M12 4 Q12 18 12 32" stroke="#451a03" stroke-width="2" fill="none"/>
+      </svg>
+      <svg class="coffee-bean-svg absolute w-4 h-6 opacity-30" style="top: 10%; right: 30%; animation: float 7s ease-in-out infinite 4s;" viewBox="0 0 24 36" fill="#b45309">
+        <ellipse cx="12" cy="18" rx="10" ry="16"/>
+        <path d="M12 4 Q12 18 12 32" stroke="#451a03" stroke-width="2" fill="none"/>
+      </svg>
     </div>
 
     <div class="container mx-auto px-6 py-20 relative z-10">
@@ -67,19 +95,30 @@
           </div>
         </div>
 
-        <!-- Hero Image -->
+        <!-- Hero Image - Coffee Bottle -->
         <div class="flex-1 flex justify-center lg:justify-end">
-          <div class="relative">
-            <div class="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-br from-amber-600/30 to-amber-900/50 backdrop-blur-sm flex items-center justify-center animate-pulse-slow">
-              <div class="w-64 h-64 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-amber-700/40 to-amber-800/60 flex items-center justify-center">
-                <svg class="w-40 h-40 lg:w-52 lg:h-52 text-amber-500" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M2 21V19H4V13C4 11.5 4.42 10.13 5.26 8.94C6.09 7.75 7.22 6.94 8.64 6.51C8.4 6.16 8.27 5.75 8.27 5.27C8.27 4.64 8.5 4.11 8.97 3.65C9.44 3.18 10 2.95 10.63 2.95C10.78 2.95 10.93 2.97 11.07 3C11.22 3.04 11.36 3.1 11.5 3.17C11.5 3.05 11.5 2.94 11.5 2.82C11.5 2.44 11.63 2.12 11.89 1.85C12.15 1.58 12.47 1.45 12.84 1.45C13.22 1.45 13.55 1.58 13.81 1.85C14.08 2.12 14.21 2.44 14.21 2.82C14.21 2.94 14.2 3.05 14.17 3.17C14.31 3.1 14.46 3.04 14.6 3C14.75 2.97 14.89 2.95 15.05 2.95C15.68 2.95 16.21 3.18 16.68 3.65C17.14 4.11 17.37 4.64 17.37 5.27C17.37 5.75 17.23 6.16 16.95 6.51C18.38 6.94 19.53 7.75 20.39 8.94C21.25 10.13 21.68 11.5 21.68 13V19H24V21H2Z"/>
-                </svg>
-              </div>
+          <div class="relative group">
+            <!-- Glow Background -->
+            <div class="absolute inset-0 bg-gradient-to-br from-amber-500/40 to-amber-700/30 rounded-3xl blur-3xl transform scale-110 group-hover:scale-125 transition-transform duration-700"></div>
+            
+            <!-- Floating Coffee Bottle -->
+            <div class="relative animate-float-bottle">
+              <img 
+                src="~/assets/img/product.png" 
+                alt="MSP Coffee Premium Bottle" 
+                class="w-100 h-auto lg:w-96 drop-shadow-2xl transform hover:scale-125 transition-transform duration-500"
+              />
+              
+              <!-- Sparkle Effects -->
+              <div class="absolute top-10 right-4 w-3 h-3 bg-amber-300 rounded-full animate-ping opacity-75"></div>
+              <div class="absolute top-1/3 left-0 w-2 h-2 bg-amber-400 rounded-full animate-ping opacity-50 delay-300"></div>
+              <div class="absolute bottom-1/4 right-8 w-2 h-2 bg-white rounded-full animate-ping opacity-60 delay-700"></div>
             </div>
-            <!-- Decorative Elements -->
-            <div class="absolute -top-4 -right-4 w-20 h-20 bg-amber-500/20 rounded-full blur-xl animate-pulse"></div>
-            <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-amber-600/30 rounded-full blur-lg animate-pulse delay-500"></div>
+            
+            <!-- Decorative Glow Elements -->
+            <div class="absolute -top-8 -right-8 w-32 h-32 bg-amber-500/20 rounded-full blur-2xl animate-pulse"></div>
+            <div class="absolute -bottom-8 -left-8 w-24 h-24 bg-amber-600/30 rounded-full blur-xl animate-pulse delay-500"></div>
+            <div class="absolute top-1/2 -right-4 w-16 h-16 bg-amber-400/20 rounded-full blur-lg animate-pulse delay-1000"></div>
           </div>
         </div>
       </div>
@@ -102,7 +141,28 @@
   50% { transform: translateY(-20px) rotate(10deg); }
 }
 
+@keyframes float-bottle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.animate-float-bottle {
+  animation: float-bottle 4s ease-in-out infinite;
+}
+
 .animate-pulse-slow {
   animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
 }
 </style>

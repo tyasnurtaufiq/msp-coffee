@@ -78,6 +78,20 @@
 
             <!-- Contact Info -->
             <div class="space-y-8">
+              <!-- Google Maps -->
+              <div class="bg-white rounded-3xl overflow-hidden shadow-xl shadow-stone-200/50">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.4671!2d110.3558!3d-7.7174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a59b0d6a7a8e5%3A0x4c6a3b0a8b8b8b8b!2sLapangan%20Denggung!5e0!3m2!1sen!2sid!4v1702900000000!5m2!1sen!2sid"
+                  width="100%" 
+                  height="250" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade"
+                  class="w-full"
+                ></iframe>
+              </div>
+
               <!-- Info Cards -->
               <div class="bg-white rounded-3xl p-8 shadow-xl shadow-stone-200/50">
                 <h2 class="text-2xl font-bold text-stone-900 mb-6">Informasi Kontak</h2>
@@ -91,7 +105,7 @@
                     </div>
                     <div>
                       <h4 class="font-semibold text-stone-900">Alamat</h4>
-                      <p class="text-stone-500">Jl. Kopi Nusantara No. 123<br>Jakarta Selatan, 12345</p>
+                      <p class="text-stone-500">Jl. Denggung Raya No. 45<br>Tridadi, Sleman, Yogyakarta 55511</p>
                     </div>
                   </div>
 
