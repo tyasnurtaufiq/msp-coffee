@@ -12,26 +12,26 @@ interface StockHistoryEntry {
 export const useStockStore = defineStore('stock', {
     state: () => ({
         stock: {
-            coffee: 5000,  // gram
-            milk: 3000,    // ml
-            syrup: 2000    // ml
+            coffee: 1500,  // gram
+            milk: 2000,    // ml
+            syrup: 1300   // ml
         },
         stockHistory: [] as StockHistoryEntry[],
         products: [
             {
                 id: 'kopi-gularen',
                 name: 'Kopi Gula Aren',
-                ingredients: { coffee: 20, milk: 0, syrup: 30 }
+                ingredients: { coffee: 25, milk: 120, syrup: 55 }
             },
             {
                 id: 'spanish-latte',
                 name: 'Spanish Latte',
-                ingredients: { coffee: 20, milk: 150, syrup: 20 }
+                ingredients: { coffee: 20, milk: 160, syrup: 20 }
             },
             {
                 id: 'honey',
                 name: 'Honey Coffee',
-                ingredients: { coffee: 20, milk: 50, syrup: 25 }
+                ingredients: { coffee: 18, milk: 140, syrup: 42 }
             }
         ]
     }),

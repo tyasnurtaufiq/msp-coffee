@@ -119,7 +119,6 @@ msp-coffee/
 ├── 📂 pages/
 │   ├── index.vue              # Landing page
 │   ├── login.vue              # Login page
-│   ├── register.vue           # Register page
 │   ├── contact.vue            # Contact page
 │   ├── team.vue               # Team page
 │   └── dashboard/

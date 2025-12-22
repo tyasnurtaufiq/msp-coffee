@@ -5,9 +5,9 @@
 export default defineEventHandler(async (event) => {
     // Simulasi data stok (ganti dengan database query)
     const stock = {
-        coffee: 5000,  // gram
-        milk: 3000,    // ml
-        syrup: 2000    // ml
+        coffee: 1500,  // gram
+        milk: 2000,    // ml
+        syrup: 1300    // ml
     }
 
     return {
