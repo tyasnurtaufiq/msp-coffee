@@ -97,13 +97,17 @@ msp-coffee/
 │   └── img/                   # Image assets
 │
 ├── 📂 components/
-│   ├── auth/                  # Auth components
 │   ├── dashboard/             # Dashboard components
 │   │   └── Sidebar.vue        # Responsive sidebar
 │   └── landing/               # Landing page components
+│       ├── About.vue          # Tentang kami section
+│       ├── Footer.vue         # Footer component
+│       ├── Gallery.vue        # Galeri section
+│       ├── Hero.vue           # Hero section
+│       ├── Menu.vue           # Menu produk section
+│       └── Navbar.vue         # Navigation bar
 │
 ├── 📂 composables/
-│   ├── useAuth.ts             # Authentication composable
 │   └── useGaussElimination.ts # Algoritma eliminasi Gauss
 │
 ├── 📂 layouts/

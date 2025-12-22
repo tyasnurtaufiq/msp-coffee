@@ -45,14 +45,14 @@
         </button>
       </div>
 
-      <div class="mt-6 text-center">
+      <!-- <div class="mt-6 text-center">
         <p class="text-stone-600">
           Belum punya akun? 
           <NuxtLink to="/register" class="text-amber-600 hover:text-amber-700 font-semibold">
             Daftar
           </NuxtLink>
         </p>
-      </div>
+      </div> -->
 
       <div class="mt-6 text-center">
         <NuxtLink to="/" class="text-stone-500 hover:text-stone-700 text-sm">

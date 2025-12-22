@@ -55,7 +55,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <span class="text-stone-400">Jl. Kopi Nusantara No. 123<br>Jakarta Selatan, 12345</span>
+              <span class="text-stone-400">Jl. Denggung Raya No. 45 Tridadi, Sleman, <br>Daerah Istimewa Yogyakarta 55511</span>
             </li>
             <li class="flex items-center gap-3">
               <svg class="w-5 h-5 text-amber-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -98,7 +98,7 @@
       <div class="container mx-auto px-6 py-6">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
           <p class="text-stone-500 text-sm">
-            © 2024 MSP Coffee. All rights reserved.
+            © 2025 MSP Coffee. All rights reserved.
           </p>
           <div class="flex gap-6 text-sm">
             <a href="#" class="text-stone-500 hover:text-amber-500 transition-colors">Privacy Policy</a>

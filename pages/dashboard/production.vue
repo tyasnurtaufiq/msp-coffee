@@ -133,7 +133,7 @@
                 Analisis
               </h4>
               <p class="text-sm text-purple-800 leading-relaxed">
-                Berdasarkan perhitungan Eliminasi Gauss, dengan stok bahan baku yang tersedia saat ini, Anda dapat memproduksi maksimal 
+                Berdasarkan perhitungan dengan stok bahan baku yang tersedia saat ini, Anda dapat memproduksi maksimal 
                 <strong>{{ getTotalCups() }} cup kopi</strong> dengan kombinasi optimal dari ketiga produk.
               </p>
             </div>
@@ -149,7 +149,7 @@
       </div>
 
       <!-- Explanation -->
-      <div class="mt-8 bg-gradient-to-br from-stone-900 to-stone-800 rounded-xl shadow-sm p-8 text-white">
+      <!-- <div class="mt-8 bg-gradient-to-br from-stone-900 to-stone-800 rounded-xl shadow-sm p-8 text-white">
         <h2 class="text-2xl font-bold mb-4 flex items-center">
           <svg class="h-7 w-7 mr-3 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -174,6 +174,176 @@
             <p class="text-sm text-stone-300">Temukan nilai maksimal dengan batasan stok bahan baku</p>
           </div>
         </div>
+      </div> -->
+
+      <!-- Pure Gauss Elimination Calculator -->
+      <div class="mt-8 bg-white rounded-xl shadow-sm p-6">
+        <h2 class="text-2xl font-bold text-stone-900 mb-4 flex items-center">
+          <svg class="h-7 w-7 mr-3 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          Kalkulator Produk
+        </h2>
+        <p class="text-stone-600 mb-6">Perhitungan Maksimal Produk dengan batasan stok bahan baku.</p>
+
+        <!-- Equations Display -->
+        <!-- <div class="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-lg p-5 mb-6 border border-purple-200">
+          <h3 class="font-bold text-purple-900 mb-3">Sistem Persamaan Linear:</h3>
+          <div class="font-mono text-sm space-y-2">
+            <div class="flex items-center">
+              <span class="text-purple-600 font-semibold mr-2">Persamaan 1:</span>
+              <span class="text-stone-800">25A + 20B + 18C = {{ stockStore.stock.coffee }} (stok biji kopi)</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-purple-600 font-semibold mr-2">Persamaan 2:</span>
+              <span class="text-stone-800">120A + 160B + 140C = {{ stockStore.stock.milk }} (stok susu)</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-purple-600 font-semibold mr-2">Persamaan 3:</span>
+              <span class="text-stone-800">55A + 20B + 42C = {{ stockStore.stock.syrup }} (stok syrup)</span>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- Recipe Table -->
+        <!-- <div class="bg-stone-50 rounded-lg p-5 mb-6 border border-stone-200">
+          <h3 class="font-bold text-stone-900 mb-3">Tabel Resep Produk:</h3>
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-stone-300">
+                <th class="text-left py-2 text-stone-600">Kode</th>
+                <th class="text-left py-2 text-stone-600">Nama Produk</th>
+                <th class="text-left py-2 text-stone-600">Resep</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-stone-200">
+                <td class="py-2 font-bold text-amber-600">A</td>
+                <td class="py-2">Kopi Gula Aren</td>
+                <td class="py-2 text-stone-600">25g kopi, 120ml susu, 55ml syrup</td>
+              </tr>
+              <tr class="border-b border-stone-200">
+                <td class="py-2 font-bold text-blue-600">B</td>
+                <td class="py-2">Spanish Latte</td>
+                <td class="py-2 text-stone-600">20g kopi, 160ml susu, 20ml syrup</td>
+              </tr>
+              <tr>
+                <td class="py-2 font-bold text-green-600">C</td>
+                <td class="py-2">Kopi Honey</td>
+                <td class="py-2 text-stone-600">18g kopi, 140ml susu, 42ml syrup</td>
+              </tr>
+            </tbody>
+          </table>
+        </div> -->
+
+        <!-- Calculate Button -->
+        <div class="mb-6">
+          <button 
+            @click="calculatePureGauss"
+            class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-4 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all font-semibold text-lg shadow-lg"
+          >
+            🔢 Hitung Produksi Maksimal
+          </button>
+        </div>
+
+        <!-- Results -->
+        <div v-if="pureGaussResult" class="space-y-4">
+          <!-- Solution -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Product A -->
+            <div class="rounded-lg p-5 border"
+              :class="pureGaussResult.rawA < 0 
+                ? 'bg-gradient-to-br from-red-100 to-red-50 border-red-300' 
+                : 'bg-gradient-to-br from-amber-100 to-amber-50 border-amber-300'">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-bold text-lg" :class="pureGaussResult.rawA < 0 ? 'text-red-800' : 'text-amber-800'">Kopi Gula Aren</span>
+                <span class="text-white px-2 py-1 rounded text-xs" :class="pureGaussResult.rawA < 0 ? 'bg-red-600' : 'bg-amber-600'">Kopi Gula Aren</span>
+              </div>
+              <div class="text-4xl font-bold" :class="pureGaussResult.rawA < 0 ? 'text-red-600' : 'text-amber-600'">
+                {{ pureGaussResult.rawA }}
+              </div>
+              <div class="text-sm mt-1" :class="pureGaussResult.rawA < 0 ? 'text-red-700' : 'text-amber-700'">cup</div>
+              <div v-if="pureGaussResult.rawA < 0" class="mt-3 text-xs text-red-600 bg-red-50 p-2 rounded border border-red-200">
+                ⚠️ Seharusnya produk Kopi Gula Aren menjadi <strong>{{ Math.abs(pureGaussResult.rawA) }} cup</strong>, namun dikarenakan bahan baku kurang, maka hasilnya menjadi negatif.
+              </div>
+            </div>
+            
+            <!-- Product B -->
+            <div class="rounded-lg p-5 border"
+              :class="pureGaussResult.rawB < 0 
+                ? 'bg-gradient-to-br from-red-100 to-red-50 border-red-300' 
+                : 'bg-gradient-to-br from-blue-100 to-blue-50 border-blue-300'">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-bold text-lg" :class="pureGaussResult.rawB < 0 ? 'text-red-800' : 'text-blue-800'">Spanish Latte</span>
+                <span class="text-white px-2 py-1 rounded text-xs" :class="pureGaussResult.rawB < 0 ? 'bg-red-600' : 'bg-blue-600'">Spanish Latte</span>
+              </div>
+              <div class="text-4xl font-bold" :class="pureGaussResult.rawB < 0 ? 'text-red-600' : 'text-blue-600'">
+                {{ pureGaussResult.rawB }}
+              </div>
+              <div class="text-sm mt-1" :class="pureGaussResult.rawB < 0 ? 'text-red-700' : 'text-blue-700'">cup</div>
+              <div v-if="pureGaussResult.rawB < 0" class="mt-3 text-xs text-red-600 bg-red-50 p-2 rounded border border-red-200">
+                ⚠️ Seharusnya produk Spanish Latte menjadi <strong>{{ Math.abs(pureGaussResult.rawB) }} cup</strong>, namun dikarenakan bahan baku kurang, maka hasilnya menjadi negatif.
+              </div>
+            </div>
+            
+            <!-- Product C -->
+            <div class="rounded-lg p-5 border"
+              :class="pureGaussResult.rawC < 0 
+                ? 'bg-gradient-to-br from-red-100 to-red-50 border-red-300' 
+                : 'bg-gradient-to-br from-green-100 to-green-50 border-green-300'">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-bold text-lg" :class="pureGaussResult.rawC < 0 ? 'text-red-800' : 'text-green-800'">Kopi Honey</span>
+                <span class="text-white px-2 py-1 rounded text-xs" :class="pureGaussResult.rawC < 0 ? 'bg-red-600' : 'bg-green-600'">Kopi Honey</span>
+              </div>
+              <div class="text-4xl font-bold" :class="pureGaussResult.rawC < 0 ? 'text-red-600' : 'text-green-600'">
+                {{ pureGaussResult.rawC }}
+              </div>
+              <div class="text-sm mt-1" :class="pureGaussResult.rawC < 0 ? 'text-red-700' : 'text-green-700'">cup</div>
+              <div v-if="pureGaussResult.rawC < 0" class="mt-3 text-xs text-red-600 bg-red-50 p-2 rounded border border-red-200">
+                ⚠️ Seharusnya produk Kopi Honey menjadi <strong>{{ Math.abs(pureGaussResult.rawC) }} cup</strong>, namun dikarenakan bahan baku kurang, maka hasilnya menjadi negatif.
+              </div>
+            </div>
+          </div>
+
+          <!-- Usage Summary -->
+          <!-- <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg p-5 border border-indigo-200">
+            <h4 class="font-bold text-indigo-900 mb-3 flex items-center">
+              <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Ringkasan Hasil Eliminasi Gauss
+            </h4>
+            <p class="text-indigo-800 leading-relaxed">
+              Dengan menggunakan metode Eliminasi Gauss murni pada sistem 3 persamaan 3 variabel, 
+              didapatkan solusi: <strong>A = {{ pureGaussResult.rawA }}</strong>, 
+              <strong>B = {{ pureGaussResult.rawB }}</strong>, dan <strong>C = {{ pureGaussResult.rawC }}</strong>.
+            </p>
+            <div v-if="pureGaussResult.valid" class="mt-3 text-green-600 flex items-center">
+              <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Solusi valid (semua nilai ≥ 0) - Total produksi: <strong>{{ pureGaussResult.rawA + pureGaussResult.rawB + pureGaussResult.rawC }} cup</strong>
+            </div>
+            <div v-else class="mt-3 text-red-600">
+              <div class="flex items-center mb-2">
+                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                Solusi tidak feasible (ada nilai negatif)
+              </div>
+              <p class="text-sm text-red-700">
+                Stok bahan baku tidak mencukupi untuk memproduksi kombinasi ketiga produk secara bersamaan sesuai sistem persamaan.
+              </p>
+            </div>
+          </div> -->
+        </div>
+
+        <div v-else class="text-center py-12">
+          <svg class="h-16 w-16 text-purple-200 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          <p class="text-stone-500">Klik tombol di atas untuk menghitung dengan Eliminasi Gauss murni</p>
+        </div>
       </div>
     </div>
   </div>
@@ -185,9 +355,10 @@ definePageMeta({
 })
 
 const stockStore = useStockStore()
-const { calculateMaxProduction } = useGaussElimination()
+const { calculateMaxProduction, gaussElimination } = useGaussElimination()
 
 const calculationResult = ref([])
+const pureGaussResult = ref(null)
 
 const calculateProduction = () => {
   calculationResult.value = calculateMaxProduction(
@@ -198,5 +369,84 @@ const calculateProduction = () => {
 
 const getTotalCups = () => {
   return calculationResult.value.reduce((sum, item) => sum + item.maxQuantity, 0)
+}
+
+/**
+ * Perhitungan Eliminasi Gauss Murni
+ * Menyelesaikan sistem persamaan:
+ * 25A + 20B + 18C = stok_kopi
+ * 120A + 160B + 140C = stok_susu
+ * 55A + 20B + 42C = stok_syrup
+ */
+const calculatePureGauss = () => {
+  const stock = stockStore.stock
+  
+  // Matriks augmented [A|b]
+  // Baris 1: 25A + 20B + 18C = stok_kopi
+  // Baris 2: 120A + 160B + 140C = stok_susu
+  // Baris 3: 55A + 20B + 42C = stok_syrup
+  let matrix = [
+    [25, 20, 18, stock.coffee],
+    [120, 160, 140, stock.milk],
+    [55, 20, 42, stock.syrup]
+  ]
+  
+  // Deep copy untuk operasi
+  matrix = matrix.map(row => [...row])
+  
+  // LANGKAH 1: Eliminasi kolom 1 (buat elemen di bawah pivot menjadi 0)
+  // R2 = R2 - (120/25) * R1
+  const factor1 = matrix[1][0] / matrix[0][0]
+  for (let j = 0; j < 4; j++) {
+    matrix[1][j] = matrix[1][j] - factor1 * matrix[0][j]
+  }
+  
+  // R3 = R3 - (55/25) * R1
+  const factor2 = matrix[2][0] / matrix[0][0]
+  for (let j = 0; j < 4; j++) {
+    matrix[2][j] = matrix[2][j] - factor2 * matrix[0][j]
+  }
+  
+  // LANGKAH 2: Eliminasi kolom 2 (buat elemen di bawah pivot menjadi 0)
+  // R3 = R3 - (matrix[2][1]/matrix[1][1]) * R2
+  if (matrix[1][1] !== 0) {
+    const factor3 = matrix[2][1] / matrix[1][1]
+    for (let j = 0; j < 4; j++) {
+      matrix[2][j] = matrix[2][j] - factor3 * matrix[1][j]
+    }
+  }
+  
+  // LANGKAH 3: Back Substitution
+  // Dari baris 3: matrix[2][2] * C = matrix[2][3]
+  let C = 0, B = 0, A = 0
+  
+  if (matrix[2][2] !== 0) {
+    C = matrix[2][3] / matrix[2][2]
+  }
+  
+  // Dari baris 2: matrix[1][1] * B + matrix[1][2] * C = matrix[1][3]
+  if (matrix[1][1] !== 0) {
+    B = (matrix[1][3] - matrix[1][2] * C) / matrix[1][1]
+  }
+  
+  // Dari baris 1: matrix[0][0] * A + matrix[0][1] * B + matrix[0][2] * C = matrix[0][3]
+  if (matrix[0][0] !== 0) {
+    A = (matrix[0][3] - matrix[0][1] * B - matrix[0][2] * C) / matrix[0][0]
+  }
+  
+  // Round values untuk hasil akhir (x.1-x.4 bulatkan ke bawah, x.5-x.9 bulatkan ke atas)
+  const finalA = Math.round(A)
+  const finalB = Math.round(B)
+  const finalC = Math.round(C)
+  
+  // Check if solution is valid (all values >= 0)
+  const valid = finalA >= 0 && finalB >= 0 && finalC >= 0
+  
+  pureGaussResult.value = {
+    rawA: finalA,
+    rawB: finalB,
+    rawC: finalC,
+    valid
+  }
 }
 </script>
