@@ -88,10 +88,10 @@
                   <span class="text-white px-2 py-0.5 rounded text-xs" :class="pureGaussResult.rawA < 0 ? 'bg-red-600' : 'bg-amber-600'">Kopi Gula Aren</span>
                 </div>
                 <div class="text-3xl font-bold" :class="pureGaussResult.rawA < 0 ? 'text-red-600' : 'text-amber-600'">
-                  {{ pureGaussResult.rawA }} <span class="text-sm font-normal">cup</span>
+                  {{ showDecimal ? pureGaussResult.rawA : Math.trunc(pureGaussResult.rawA) }} <span class="text-sm font-normal">cup</span>
                 </div>
                 <div v-if="pureGaussResult.rawA < 0" class="mt-2 text-xs text-red-600 bg-red-50 p-2 rounded border border-red-200">
-                  ⚠️ Seharusnya produk Kopi Gula Aren menjadi <strong>{{ Math.abs(pureGaussResult.rawA) }} cup</strong>, namun dikarenakan bahan baku kurang, maka hasilnya menjadi negatif.
+                  ⚠️ Seharusnya produk Kopi Gula Aren menjadi <strong>{{ showDecimal ? Math.abs(pureGaussResult.rawA) : Math.trunc(Math.abs(pureGaussResult.rawA)) }} cup</strong>, namun dikarenakan bahan baku kurang, maka hasilnya menjadi negatif.
                 </div>
               </div>
               
@@ -105,10 +105,10 @@
                   <span class="text-white px-2 py-0.5 rounded text-xs" :class="pureGaussResult.rawB < 0 ? 'bg-red-600' : 'bg-blue-600'">Spanish Latte</span>
                 </div>
                 <div class="text-3xl font-bold" :class="pureGaussResult.rawB < 0 ? 'text-red-600' : 'text-blue-600'">
-                  {{ pureGaussResult.rawB }} <span class="text-sm font-normal">cup</span>
+                  {{ showDecimal ? pureGaussResult.rawB : Math.trunc(pureGaussResult.rawB) }} <span class="text-sm font-normal">cup</span>
                 </div>
                 <div v-if="pureGaussResult.rawB < 0" class="mt-2 text-xs text-red-600 bg-red-50 p-2 rounded border border-red-200">
-                  ⚠️ Seharusnya produk Spanish Latte menjadi <strong>{{ Math.abs(pureGaussResult.rawB) }} cup</strong>, namun dikarenakan bahan baku kurang, maka hasilnya menjadi negatif.
+                  ⚠️ Seharusnya produk Spanish Latte menjadi <strong>{{ showDecimal ? Math.abs(pureGaussResult.rawB) : Math.trunc(Math.abs(pureGaussResult.rawB)) }} cup</strong>, namun dikarenakan bahan baku kurang, maka hasilnya menjadi negatif.
                 </div>
               </div>
               
@@ -122,11 +122,27 @@
                   <span class="text-white px-2 py-0.5 rounded text-xs" :class="pureGaussResult.rawC < 0 ? 'bg-red-600' : 'bg-green-600'">Kopi Honey</span>
                 </div>
                 <div class="text-3xl font-bold" :class="pureGaussResult.rawC < 0 ? 'text-red-600' : 'text-green-600'">
-                  {{ pureGaussResult.rawC }} <span class="text-sm font-normal">cup</span>
+                  {{ showDecimal ? pureGaussResult.rawC : Math.trunc(pureGaussResult.rawC) }} <span class="text-sm font-normal">cup</span>
                 </div>
                 <div v-if="pureGaussResult.rawC < 0" class="mt-2 text-xs text-red-600 bg-red-50 p-2 rounded border border-red-200">
-                  ⚠️ Seharusnya produk Kopi Honey menjadi <strong>{{ Math.abs(pureGaussResult.rawC) }} cup</strong>, namun dikarenakan bahan baku kurang, maka hasilnya menjadi negatif.
+                  ⚠️ Seharusnya produk Kopi Honey menjadi <strong>{{ showDecimal ? Math.abs(pureGaussResult.rawC) : Math.trunc(Math.abs(pureGaussResult.rawC)) }} cup</strong>, namun dikarenakan bahan baku kurang, maka hasilnya menjadi negatif.
                 </div>
+              </div>
+              
+              <!-- Toggle Decimal Button -->
+              <div class="flex justify-end mt-4">
+                <button 
+                  @click="showDecimal = !showDecimal"
+                  class="flex items-center space-x-1 text-xs px-3 py-1.5 rounded-full transition-all"
+                  :class="showDecimal 
+                    ? 'bg-purple-600 text-white' 
+                    : 'bg-purple-100 text-purple-700 hover:bg-purple-200'"
+                >
+                  <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                  </svg>
+                  <span>{{ showDecimal ? 'Desimal' : 'Desimal' }}</span>
+                </button>
               </div>
             </div>
 
@@ -241,6 +257,7 @@ const { calculateMaxProduction, gaussElimination } = useGaussElimination()
 
 const calculationResult = ref([])
 const pureGaussResult = ref(null)
+const showDecimal = ref(false)
 
 const calculateProduction = () => {
   calculationResult.value = calculateMaxProduction(
@@ -316,10 +333,10 @@ const calculatePureGauss = () => {
     A = (matrix[0][3] - matrix[0][1] * B - matrix[0][2] * C) / matrix[0][0]
   }
   
-  // Round values untuk hasil akhir (x.1-x.4 bulatkan ke bawah, x.5-x.9 bulatkan ke atas)
-  const finalA = Math.round(A)
-  const finalB = Math.round(B)
-  const finalC = Math.round(C)
+  // Nilai hasil perhitungan tanpa pembulatan
+  const finalA = parseFloat(A.toFixed(2))
+  const finalB = parseFloat(B.toFixed(2))
+  const finalC = parseFloat(C.toFixed(2))
   
   // Check if solution is valid (all values >= 0)
   const valid = finalA >= 0 && finalB >= 0 && finalC >= 0
