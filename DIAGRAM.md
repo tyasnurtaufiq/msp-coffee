@@ -247,11 +247,9 @@ flowchart TB
 
 ### Produk yang Tersedia:
 1. **Kopi Gula Aren** - Rp 19.000
-   - Resep: 25g kopi, 120ml susu, 55ml sirup
 2. **Spanish Latte** - Rp 19.000
-   - Resep: 20g kopi, 160ml susu, 20ml sirup
 3. **Honey Coffee** - Rp 19.000
-   - Resep: 18g kopi, 140ml susu, 42ml sirup
+
 
 ### Tipe Perubahan Stok:
 - `Restock` - Penambahan stok manual
