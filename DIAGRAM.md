@@ -153,9 +153,9 @@ flowchart TB
     V --> UC3
     V --> UC4
     V --> UC5
-    V --> UC6
-    V --> UC7
 
+    U --> UC6
+    U --> UC7
     U --> UC8
     U --> UC9
     U --> UC10
