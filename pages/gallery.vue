@@ -12,7 +12,7 @@
 useHead({
   title: 'Gallery - MSP Coffee',
   meta: [
-    { name: 'description', content: 'Galeri MSP Coffee - Momen berharga dan suasana kedai kopi premium' }
+    { name: 'description', content: 'Galeri MSP Coffee - Momen berharga dan suasana UMKM MSP Coffee premium' }
   ]
 })
 </script>
