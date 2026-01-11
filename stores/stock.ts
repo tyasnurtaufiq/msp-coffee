@@ -12,9 +12,9 @@ interface StockHistoryEntry {
 export const useStockStore = defineStore('stock', {
     state: () => ({
         stock: {
-            coffee: 1500,  // gram
-            milk: 2000,    // ml
-            syrup: 1300   // ml
+            coffee: 730,  // gram
+            milk: 5000,    // ml
+            syrup: 1270   // ml
         },
         stockHistory: [] as StockHistoryEntry[],
         products: [

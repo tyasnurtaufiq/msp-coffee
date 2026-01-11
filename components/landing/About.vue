@@ -6,12 +6,12 @@
         <div class="flex-1 relative">
           <div class="relative z-10">
             <div class="w-full max-w-md mx-auto lg:mx-0">
-              <div class="aspect-square rounded-3xl bg-gradient-to-br from-amber-100 to-amber-200 p-8 shadow-2xl">
-                <div class="w-full h-full rounded-2xl bg-gradient-to-br from-stone-800 to-stone-900 flex items-center justify-center">
-                  <svg class="w-32 h-32 text-amber-500" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M18.5 3H6C4.9 3 4 3.9 4 5V19C4 20.1 4.9 21 6 21H18.5C20.4 21 22 19.4 22 17.5V6.5C22 4.6 20.4 3 18.5 3ZM18.5 19H6V5H18.5C19.3 5 20 5.7 20 6.5V17.5C20 18.3 19.3 19 18.5 19ZM9 7H15V9H9V7ZM9 11H15V13H9V11ZM9 15H13V17H9V15Z"/>
-                  </svg>
-                </div>
+              <div class="aspect-square rounded-3xl bg-gradient-to-br from-amber-100 to-amber-200 p-4 shadow-2xl overflow-hidden">
+                <img 
+                  src="~/assets/img/msp.jpg" 
+                  alt="MSP Coffee" 
+                  class="w-full h-full object-cover rounded-2xl shadow-inner"
+                />
               </div>
             </div>
           </div>
